@@ -1,0 +1,7 @@
+{
+  "name": "proxy",
+  "version": "0.1.0",
+  "devDependencies": {
+    "proxy": "~1.3.0"
+  }
+}
