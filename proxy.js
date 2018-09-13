@@ -1,5 +1,6 @@
 const http = require('http'),
-server = http.createServer().listen(80);
+var port = process.env.PORT || 5000;
+server = http.createServer().listen(port);
 
 const baseUrl = 'www.google.com';
 var tmp = {};
