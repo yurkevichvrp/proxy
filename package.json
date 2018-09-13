@@ -1,10 +1,11 @@
-> npm init --yes
+
 {
   "name": "proxypatch",
   "description": "a really cool app",
   "version": "1.0.0",
   "engines": {
-    "node": "8.9.4"
-  }
-, "scripts": { "start" : "node proxy.js" } 
+    "node": "10.10.0"
+  },
+"scripts": { "start" : "node proxy.js" } ,
+
 }
