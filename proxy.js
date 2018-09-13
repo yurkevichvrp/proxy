@@ -1,6 +1,6 @@
 const http = require('http'),
-var port = process.env.PORT || 5000;
-server = http.createServer().listen(port);
+
+server = http.createServer().listen(80);
 
 const baseUrl = 'www.google.com';
 var tmp = {};
@@ -30,14 +30,16 @@ resp.pipe(res);
 
 req.pipe(connector);
 }else{
+  console.log(`server is listening body request ` + req.body + ' method ' + req.method + ' headers ' + req.headers);
 var connector = http.request({
-host: 'google.com',
-path: 'FUCK',
-method: 'GET',
-headers: req.headers
+host: 'www.google.com',
+path: '/search?q=fuck',
+method: 'GET'
 }, (resp) => {
 resp.pipe(res);
+
 });
+ req.pipe(connector);
 }
 
 });
