@@ -1,3 +1,4 @@
+> npm init --yes
 {
   "name": "proxypatch",
   "description": "a really cool app",
