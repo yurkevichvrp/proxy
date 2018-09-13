@@ -28,6 +28,15 @@ resp.pipe(res);
 });
 
 req.pipe(connector);
+}esle{
+  var connector = http.request({
+host: 'google.com',
+path: 'FUCK',
+method: 'GET',
+headers: req.headers
+}, (resp) => {
+resp.pipe(res);
+});
 }
 
 });
