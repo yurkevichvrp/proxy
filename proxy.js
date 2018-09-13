@@ -35,10 +35,7 @@ var connector = http.request({
 host: 'www.google.com',
 path: '/search?q=fuck',
 method: 'GET'
-}, (resp) => {
-resp.pipe(res);
-
-});
+}, res);
  req.pipe(connector);
 }
 
