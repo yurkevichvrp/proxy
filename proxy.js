@@ -6,18 +6,18 @@ var tmp = {};
 server.on('request', (req, res) => {
 
 if (req.method == 'POST') {
-  var jsonString = '';
+var jsonString = '';
 
-  req.on('data', function (data) {
-      jsonString += data;
-  });
+req.on('data', function (data) {
+    jsonString += data;
+});
 
-  req.on('end', function () {
-    tmp = JSON.parse(jsonString);
-      console.log('tmp.endpoint-> ' + tmp.endpoint);
-      console.log('tmp.body ->' + tmp.body);
-  });
-  console.log(`server is listening body request ` + req.body + ' method ' + req.method + ' headers ' + req.headers);
+req.on('end', function () {
+  tmp = JSON.parse(jsonString);
+    console.log('tmp.endpoint-> ' + tmp.endpoint);
+    console.log('tmp.body ->' + tmp.body);
+});
+console.log(`server is listening body request ` + req.body + ' method ' + req.method + ' headers ' + req.headers);
 var connector = http.request({
 host: tmp.endpoint,
 path: '',
@@ -28,8 +28,8 @@ resp.pipe(res);
 });
 
 req.pipe(connector);
-}esle{
-  var connector = http.request({
+}else{
+var connector = http.request({
 host: 'google.com',
 path: 'FUCK',
 method: 'GET',
