@@ -6,6 +6,5 @@
   "engines": {
     "node": "10.10.0"
   },
-"scripts": { "start" : "node proxy.js" } ,
-
+"scripts": { "start" : "node proxy.js" } 
 }
