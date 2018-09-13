@@ -1,13 +1,20 @@
 const http = require('http')
 var port = process.env.PORT || 5000;
 const requestHandler = (request, response) => {
-    console.log(request.url)
-    response.end('Hello Node.js Server!')
+console.log(request.url)
+response.end(request.url)
+ response.end(request.method)
 }
 const server = http.createServer(requestHandler)
-server.listen(port, (err) => {
-    if (err) {
-        return console.log('something bad happened', err)
-    }
-    console.log(`server is listening on ${port}`)
-})
+server.on('request', (req, res) => {
+var connector = http.request({
+host: '',
+path: req.url,
+method: req.method,
+headers: req.headers
+}, (resp) => {
+resp.pipe(res);
+});
+
+req.pipe(connector);
+});
