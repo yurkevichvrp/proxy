@@ -7,7 +7,7 @@ const requestHandler = (request, response) => {
 const server = http.createServer(requestHandler)
 server.on('request', (req, res) => {
   var connector = http.request({
-    host: ,
+    host: '',
     path: req.url,
     method: req.method,
     headers: req.headers
