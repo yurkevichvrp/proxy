@@ -1,19 +1,33 @@
-const http = require('http')
-var port = process.env.PORT || 5000;
-const requestHandler = (request, response) => {
-    console.log(request.url)
-    response.end('Hello Node.js Server!')
-}
-const server = http.createServer(requestHandler)
+const http = require('http'),
+server = http.createServer().listen(80);
+
+const baseUrl = 'www.google.com';
+var tmp = {};
 server.on('request', (req, res) => {
-  var connector = http.request({
-    host: '',
-    path: req.url,
-    method: req.method,
-    headers: req.headers
-  }, (resp) => {
-    resp.pipe(res);
+
+if (req.method == 'POST') {
+  var jsonString = '';
+
+  req.on('data', function (data) {
+      jsonString += data;
   });
 
-  req.pipe(connector);
+  req.on('end', function () {
+    tmp = JSON.parse(jsonString);
+      console.log('tmp.endpoint-> ' + tmp.endpoint);
+      console.log('tmp.body ->' + tmp.body);
+  });
+  console.log(`server is listening body request ` + req.body + ' method ' + req.method + ' headers ' + req.headers);
+var connector = http.request({
+host: tmp.endpoint,
+path: '',
+method: 'PATCH',
+headers: req.headers
+}, (resp) => {
+resp.pipe(res);
+});
+
+req.pipe(connector);
+}
+
 });
